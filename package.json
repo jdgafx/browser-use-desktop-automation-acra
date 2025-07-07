@@ -1,0 +1,18 @@
+{
+  "dependencies": {
+    "@cloudflare/mcp-server-cloudflare": "^0.2.0",
+    "@elastic/mcp-server-elasticsearch": "^0.3.1",
+    "@hubspot/mcp-server": "^0.4.0",
+    "@modelcontextprotocol/server-filesystem": "^2025.7.1",
+    "@modelcontextprotocol/server-google-maps": "^0.6.2",
+    "@negokaz/excel-mcp-server": "^0.11.1",
+    "@notionhq/notion-mcp-server": "^1.8.1",
+    "@sentry/mcp-server": "^0.12.0",
+    "@shelm/wikipedia-mcp-server": "^1.0.1",
+    "@supabase/mcp-server-supabase": "^0.4.5",
+    "@upstash/context7-mcp": "^1.0.14",
+    "graphlit-mcp-server": "^1.0.20250705001",
+    "mcp-server-code-runner": "^0.1.7",
+    "mcp-server-kubernetes": "^2.5.0"
+  }
+}
