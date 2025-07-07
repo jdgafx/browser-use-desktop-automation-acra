@@ -1,13 +1,13 @@
 # Browser Use Desktop Automation - Claude Code Edition
 
-AI-powered browser automation with natural language commands using Google Gemini, built on browser-use desktop + web-ui integration.
+AI-powered browser automation with natural language commands using DeepSeek AI, built on browser-use desktop + web-ui integration.
 
 ## 🚀 Features
 
 - **Natural Language Browser Control**: Give commands in plain English
-- **Google Gemini Integration**: Powered by Google's latest AI models from AI Studio
+- **DeepSeek AI Integration**: Powered by DeepSeek's advanced reasoning models (Chat & Reasoner)
 - **Complete Browser-Use Stack**: Desktop app + Web UI + Python backend
-- **Multi-LLM Support**: OpenAI, Anthropic, Google, DeepSeek, Ollama, and more
+- **Multi-LLM Support**: DeepSeek, OpenAI, Anthropic, Google, Ollama, and more
 - **MCP Server Integration**: 14 pre-configured Model Context Protocol servers
 - **Chrome Debug Protocol**: Direct browser control and automation
 - **Cross-Platform**: Windows, macOS, and Linux support
@@ -24,7 +24,7 @@ This project uses a **3-layer architecture**:
 2. **Python Backend** (`browser-use-desktop-actual/lib/web-ui/webui.py`):
    - Gradio web interface serving on port 7788
    - Browser automation via Playwright + Chrome Debug Protocol
-   - Multi-LLM support with Google Gemini as default
+   - Multi-LLM support with DeepSeek as default
 
 3. **Electron Renderer** (`browser-use-desktop-actual/src/renderer.ts`):
    - Embeds Python UI via webview
@@ -61,11 +61,11 @@ This project uses a **3-layer architecture**:
    pip install setuptools  # Required for distutils
    ```
 
-4. **Configure Google Gemini API**:
+4. **Configure DeepSeek API**:
    ```bash
    cp .env.example .env
-   # Edit .env and add your Google API key:
-   # GOOGLE_API_KEY=your_api_key_from_ai_studio_google_com
+   # Edit .env and add your DeepSeek API key:
+   # DEEPSEEK_API_KEY=your_api_key_from_platform_deepseek_com
    ```
 
 5. **Start the application**:
@@ -79,8 +79,10 @@ This project uses a **3-layer architecture**:
 1. **Access the Web Interface**: http://localhost:7788
 2. **Configure Settings**:
    - Go to "Agent Settings" tab
-   - Select "google" as LLM Provider
-   - Choose a Gemini model (default: `gemini-2.0-flash-exp`)
+   - Select "deepseek" as LLM Provider (default)
+   - Choose a DeepSeek model:
+     - `deepseek-chat` - for general conversation and tasks
+     - `deepseek-reasoner` - for advanced reasoning (recommended for complex automation)
    - Optionally enter API key directly in UI
 
 3. **Run Automation**:
@@ -92,15 +94,17 @@ This project uses a **3-layer architecture**:
 
 ## 🔑 API Configuration
 
-### Google Gemini (AI Studio)
+### DeepSeek AI (Default Provider)
 ```bash
-GOOGLE_API_KEY=your_api_key_here  # Get from aistudio.google.com
+DEEPSEEK_API_KEY=your_api_key_here  # Get from platform.deepseek.com
+DEEPSEEK_ENDPOINT=https://api.deepseek.com  # Default endpoint
+DEFAULT_LLM=deepseek  # Set as default
 ```
 
 ### Other Supported Providers
 - **OpenAI**: `OPENAI_API_KEY`
 - **Anthropic**: `ANTHROPIC_API_KEY`
-- **DeepSeek**: `DEEPSEEK_API_KEY`
+- **Google Gemini**: `GOOGLE_API_KEY`
 - **Ollama**: `OLLAMA_ENDPOINT=http://localhost:11434`
 
 ## 📁 Project Structure
@@ -121,15 +125,17 @@ browser-use-desktop-automation-cc/
 └── CLAUDE.md                         # Development instructions
 ```
 
-## 🤖 Available Gemini Models
+## 🤖 Available DeepSeek Models
 
-- `gemini-2.0-flash` (recommended)
-- `gemini-2.0-flash-thinking-exp`
-- `gemini-1.5-flash-latest`
-- `gemini-1.5-flash-8b-latest`
-- `gemini-2.0-pro-exp-02-05`
-- `gemini-2.5-pro-preview-03-25`
-- `gemini-2.5-flash-preview-04-17`
+### Recommended for Browser Automation:
+- **`deepseek-reasoner`** (DeepSeek-R1) - Advanced reasoning, perfect for complex automation logic
+- **`deepseek-chat`** (DeepSeek-V3) - General conversation and task execution
+
+### Model Comparison:
+| Model | Best For | Reasoning | Speed |
+|-------|----------|-----------|-------|
+| `deepseek-reasoner` | Complex automation, multi-step tasks | ⭐⭐⭐⭐⭐ | ⭐⭐⭐ |
+| `deepseek-chat` | General automation, simple tasks | ⭐⭐⭐ | ⭐⭐⭐⭐⭐ |
 
 ## 🔍 Troubleshooting
 
@@ -143,7 +149,7 @@ browser-use-desktop-automation-cc/
 
 2. Install missing dependencies:
    ```bash
-   pip install setuptools langchain-google-genai
+   pip install setuptools langchain-openai
    ```
 
 ### Chrome Not Opening
@@ -176,7 +182,7 @@ cd lib/web-ui
 source .venv/bin/activate
 python -c "
 from src.utils.llm_provider import get_llm_model
-llm = get_llm_model(provider='google', model_name='gemini-2.0-flash-exp')
+llm = get_llm_model(provider='deepseek', model_name='deepseek-chat')
 response = llm.invoke('Hello!')
 print(response.content)
 "
@@ -206,7 +212,7 @@ MIT License - see individual component licenses for details.
 - [browser-use](https://github.com/browser-use/browser-use) - Core automation library
 - [browser-use/desktop](https://github.com/browser-use/desktop) - Desktop application base
 - [browser-use/web-ui](https://github.com/browser-use/web-ui) - Web interface
-- Google AI Studio - Gemini API access
+- DeepSeek Platform - Advanced AI models for automation
 
 ---
 
