@@ -13,6 +13,6 @@
     "@upstash/context7-mcp": "^1.0.14",
     "graphlit-mcp-server": "^1.0.20250705001",
     "mcp-server-code-runner": "^0.1.7",
-    "mcp-server-kubernetes": "^2.5.0"
+    "mcp-server-kubernetes": "^2.9.8"
   }
 }
